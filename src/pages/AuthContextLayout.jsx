@@ -3,7 +3,9 @@ import { AuthContext } from "./AuthContext";
 import { useEffect, useState } from "react";
 
 export function AuthContextProvider({ children }) {
-  const [dataLogin, setDataLogin] = useState(null);
+  const [dataLogin, setDataLogin] = useState(
+    JSON.parse(window.localStorage.getItem("userLogin"))
+  );
   const navigate = useNavigate();
   useEffect(() => {
     const users = JSON.parse(window.localStorage.getItem("users") || "[]");

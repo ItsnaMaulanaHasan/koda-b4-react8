@@ -30,7 +30,7 @@ function Form({ dataLogin }) {
   const navigate = useNavigate();
   const [alertStatus, setAlertStatus] = useState({ type: "", message: "" });
   useEffect(() => {
-    if (dataLogin) {
+    if (dataLogin.userLogin) {
       navigate("/");
     }
   }, [dataLogin, navigate]);
@@ -66,14 +66,14 @@ function Form({ dataLogin }) {
   };
 
   return (
-    <main className="h-screen justify-items-center content-center">
+    <main className="min-h-screen flex items-center justify-center p-4 sm:p-6 md:p-8">
       <Alert
         type={alertStatus.type}
         message={alertStatus.message}
         onClose={() => setAlertStatus({ type: "", message: "" })}
       />
-      <div className="grid w-full max-w-4xl grid-cols-2 overflow-hidden rounded-xl bg-white shadow-lg">
-        <div>
+      <div className="grid w-full max-w-4xl grid-cols-1 md:grid-cols-2 overflow-hidden rounded-xl bg-white shadow-lg">
+        <div className="hidden md:block">
           <img
             className="h-full w-full object-cover"
             src="/public/img/illustration.png"
@@ -82,11 +82,13 @@ function Form({ dataLogin }) {
         </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col justify-center gap-4 p-8 md:p-12"
+          className="flex flex-col justify-center gap-4 p-6 sm:p-8 md:p-12"
           noValidate
         >
-          <div className="text-3xl font-bold">Login to your account</div>
-          <div className="text-slate-500 mb-4">
+          <div className="text-2xl sm:text-3xl font-bold">
+            Login to your account
+          </div>
+          <div className="text-slate-500 mb-2 sm:mb-4 text-sm sm:text-base">
             See what is going on with your business
           </div>
           <Input
@@ -109,7 +111,7 @@ function Form({ dataLogin }) {
           </Input>
           <button
             type="submit"
-            className="w-full rounded-lg bg-[#7F265B] p-3 font-bold text-white transition-colors duration-300 hover:bg-[#591e41] focus:ring-2 focus:ring-[#7F265B] focus:ring-offset-2 mt-4"
+            className="w-full rounded-lg bg-[#7F265B] p-3 font-bold text-white transition-colors duration-300 hover:bg-[#591e41] focus:ring-2 focus:ring-[#7F265B] focus:ring-offset-2 mt-2 sm:mt-4"
           >
             Login
           </button>
